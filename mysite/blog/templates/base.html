@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>{% block title %}{% endblock %}耍大刀的博客</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="{% block desc %}{% endblock %}关于编程（java,python,js等）、设计模式、系统（linux）、开源、学习心得、工作经验–人生苦短，我用python.">
+        <meta name="description" content="{% block desc %}{% endblock %}关于编程（python）、设计模式、系统（linux）、开源、学习心得、工作经验–人生苦短，我用python.">
         <meta name="keywords" content="{% block keywords %}{% endblock %}python,linux,vim,web开发,工作经验,项目实战,教程">
         <meta name="author" content="耍大刀">
         <meta name="baidu-site-verification" content="L1tGNksWV2rt8zho" />
@@ -50,7 +50,7 @@
         <div class="bs-header">
             <div class="container">
                 <h1>耍大刀的博客</h1>
-                <p>{% block yijuhua %}{% endblock %}关注python、vim、linux、web开发和互联网--life is short, we need python.</p>
+                <p>{% block yijuhua %}{% endblock %}关注python、linux、web开发和互联网--life is short, we need python.</p>
                 <ul class="nav nav-pills">                 
                  {% for category in categories %}
                     <li><a href="{% url 'blog:category' category.id %}">{{ category.name }}</a></li>
