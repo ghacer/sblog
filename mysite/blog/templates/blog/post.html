@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} | {% endblock %}
+{% block desc %}
+{% if desc %}{{ post.summary|truncatewords:140 }}{% endif %}
+{%  endblock %}
+
+{% if key_words %}
+    {% block key_words %}{{ key_words }}{% endblock %}
+{% endif %}
+<!--
+{ block extend_style %} 
+{ load staticfiles %}
+<link href="{ static 'blog/css/code.css'%}" rel='stylesheet' type='text/css' media='screen' />
+<script src="{ static 'blog/js/jquery-1.8.1.min.js'%}"></script>
+<script src="{ static 'bootstrap/js/bootstrap-dropdown.js'%}"></script>
+<script>
+    $('.dropdown-toggle').dropdown()
+</script>
+{ endblock %}
+-->
+{% block main %}
+<div class="detail">
+    <h2 class="under_line">
+        <span>{{ post.title }}</span>
+    </h2>
+    {% load markup %}
+    <div class="info">
+         发布：{{ post.pub_date|date:"Y-m-d P" }}
+    </div>
+
+    <div class="content">{{ post.content|markdown2 }}</div>
+
+    <span id="comments" name="comments"></span>
+
+     <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key={{ post.id }} data-title={{ post.title }} data-url="{% url 'blog:category' post.id%}"></div>
+     <!-- 多说评论框 end -->
+     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+         var duoshuoQuery = {short_name:"shuadadao"};
+	    (function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+
+
+      </div>
+{% endblock %}

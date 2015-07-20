@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% if title %}
+    {% block title %}{{ title }}{% endblock %}
+{% endif %}
+
+{% if desc %}
+    {% block desc %}{{ desc }}{% endblock %}
+{% endif %}
+
+{% if key_words %}
+    {% block key_words %}{{ key_words }}{% endblock %}
+{% endif %}
+
+{% if extend_style %}
+    {% block extend_style %}{{ soem }}{% endblock %}
+{% endif %}
+
+{% block yijuhua %}
+    {% if yijuhua %}{{ yijuhua }}{% endif %}
+{% endblock %}
+
+{% block main %}
+  {% for post in posts %}
+	<div class='caption'>
+	  <h3 class='under_line'>
+		<a href="{% url 'blog:post' post.id %}">{{ post.title }}</a>
+	  </h3>
+	  <div class='info'>
+	    发布: {{ post.pub_date|date:"Y/m/d H:i" }}
+	  </div>  
+
+	  <br/>
+	  <div class="entry_post">
+                <span>
+                    <p>
+                    {{ post.content|truncatewords:20 }}
+                    </p>
+                </span>
+          </div>
+	  <br/>
+	</div>
+        <br/>
+  {% endfor %}
+{% endblock %}

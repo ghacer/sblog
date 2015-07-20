@@ -14,13 +14,14 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(u'标题', max_length=128)
     author = models.ForeignKey(User, verbose_name=u'作者')
-    content = models.TextField(u'内容')
+    category = models.ForeignKey(Category, verbose_name=u'类别')
     pub_date = models.DateTimeField(auto_now_add=True)
-    category = models.ForeignKey(Category)
+    content = models.TextField(u'内容')
+
 
     class Meta:
 	ordering = ['-id']
 
     def __unicode__(self):
-	return self.name
+	return self.title
 # Create your models here.
