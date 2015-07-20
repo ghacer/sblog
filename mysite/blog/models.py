@@ -17,7 +17,7 @@ class Post(models.Model):
     category = models.ForeignKey(Category, verbose_name=u'类别')
     pub_date = models.DateTimeField(auto_now_add=True)
     content = models.TextField(u'内容')
-    is_top = models.BooleanField(defautl=False, verbose_name=u'置顶')
+    is_top = models.BooleanField(default=False, verbose_name=u'置顶')
 
     class Meta:
 	ordering = ['-is_top','-id']
