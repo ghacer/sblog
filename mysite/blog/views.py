@@ -1,4 +1,5 @@
 from django.shortcuts import render,get_object_or_404
+from django.http import HttpResponse
 from models import Post,Category
 
 def index(request):
@@ -19,4 +20,7 @@ def category(request,pk):
     categories = Category.objects.all()
 
     return render(request, 'blog/index.html', {'posts': posts, 'categories': categories})
+
+def about(request):
+	return HttpResponse('Not yet...')
 # Create your views here.
