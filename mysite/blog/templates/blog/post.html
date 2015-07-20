@@ -31,6 +31,22 @@
 
     <div class="content">{{ post.content|markdown2 }}</div>
 
+    <div class="box">
+        【上一篇】
+        {% if prev_post %}
+            <a href="{% url 'blog:post' prev_post.id %}">{{ prev_post.title }}</a>
+        {% else %}
+            没有了
+        {% endif %}
+        <br/>
+        【下一篇】
+        {% if next_post %}
+            <a href="{% url 'blog:post' next_post.id %}">{{ next_post.title }}</a>
+        {% else %}
+            没有了
+        {% endif %}
+    </div>
+
     <span id="comments" name="comments"></span>
 
      <!-- 多说评论框 start -->

@@ -17,10 +17,10 @@ class Post(models.Model):
     category = models.ForeignKey(Category, verbose_name=u'类别')
     pub_date = models.DateTimeField(auto_now_add=True)
     content = models.TextField(u'内容')
-
+    is_top = models.BooleanField(defautl=False, verbose_name=u'置顶')
 
     class Meta:
-	ordering = ['-id']
+	ordering = ['-is_top','-id']
 
     def __unicode__(self):
 	return self.title
