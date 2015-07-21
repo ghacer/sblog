@@ -1,0 +1,10 @@
+*.pyc
+.idea
+.scrapy
+run
+build
+.project
+.pydevproject
+.env
+*.log
+*.sqlite3
