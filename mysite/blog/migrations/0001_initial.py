@@ -27,13 +27,14 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=128, verbose_name='\u6807\u9898')),
-                ('content', models.TextField(verbose_name='\u5185\u5bb9')),
                 ('pub_date', models.DateTimeField(auto_now_add=True)),
+                ('content', models.TextField(verbose_name='\u5185\u5bb9')),
+                ('is_top', models.BooleanField(default=False, verbose_name='\u7f6e\u9876')),
                 ('author', models.ForeignKey(verbose_name='\u4f5c\u8005', to=settings.AUTH_USER_MODEL)),
-                ('category', models.ForeignKey(to='blog.Category')),
+                ('category', models.ForeignKey(verbose_name='\u7c7b\u522b', to='blog.Category')),
             ],
             options={
-                'ordering': ['-id'],
+                'ordering': ['-is_top', '-id'],
             },
         ),
     ]
