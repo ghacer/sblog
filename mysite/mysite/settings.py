@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'blog',
+    'linaro_django_pagination',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,7 +51,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'linaro_django_pagination.middleware.PaginationMiddleware',
 )
+
+PAGINATION_DEFAULT_PAGINATION = 2
 
 ROOT_URLCONF = 'mysite.urls'
 
